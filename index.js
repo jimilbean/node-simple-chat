@@ -32,11 +32,18 @@ io.on('connection', (socket) =>{
     socket.on('change', (data)=>{
         let name = data.name;
         let msg = `${socket.nickname}님이 닉네임으로 ${name} 변경하셨습니다`;
+
         io.emit('server-msg', {text: msg});
         socket.nickname = name;
         
-        
     });
+
+    // socket.on('color', (data)=>{
+    //     let color = data.color;
+    //     let msg = `채팅색상 ${socket.color}으로 변경하셨습니다. `
+    //     io.emit('server-msg', {text:msg});
+    // });
+
 
     socket.on('gondr', (data)=>{
         let msg = `${socket.nickname} : ${data.text}`;
